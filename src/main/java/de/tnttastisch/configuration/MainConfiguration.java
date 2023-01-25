@@ -30,12 +30,6 @@ public class MainConfiguration {
         fileWriter.close();
     }
 
-    @Deprecated (since = "1.1.1-SNAPSHOT", forRemoval = true)
-    public boolean fileExists(String name){
-        return (new File(name).exists() ? true : false);
-    }
-
-
     public boolean isFileExists(@NotNull File file) {
         return file.exists() ? true : false;
     }
@@ -43,7 +37,7 @@ public class MainConfiguration {
 
     public void load() throws IOException {
         FileReader fileReader = new FileReader("config.json");
-        if(fileExists("config.json")) {
+        if(isFileExists(new File("config.json"))) {
             JSONTokener tok = new JSONTokener(fileReader);
             JSONObject json = new JSONObject(tok);
             setToken(json.getString("discord.token"));

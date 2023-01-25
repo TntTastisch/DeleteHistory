@@ -1,7 +1,6 @@
 package de.tnttastisch.main;
 
 import de.tnttastisch.DeleteAPI;
-import de.tnttastisch.utils.log.Logger;
 
 public class DeleteHistory {
 

@@ -15,11 +15,10 @@ public class Console extends Thread {
     @Override
     public void run() {
         try {
+            systemLoad();
             Scanner scanner = new Scanner(System.in);
-            DeleteHistory.instance().api().logger().createSystemLog();
             while (running) {
                 String input = scanner.nextLine();
-                systemLoad();
                 switch(input.toLowerCase()){
                     case "stop", "end" -> {
                         System.out.println("Exiting...");
@@ -34,8 +33,9 @@ public class Console extends Thread {
                 }
                 if(running) {
                     Thread.sleep(1000);
+                } else {
+                    break;
                 }
-                DeleteHistory.instance().api().logger().outPutLogFile();
             }
         } catch (InterruptedException e) {
             System.out.println("An error occurred while executing this system. Contact the system administrator! Code: H5h0IRFI");
@@ -48,7 +48,6 @@ public class Console extends Thread {
         DeleteHistory.instance().api().shutdown();
         Thread.sleep(1000);
         System.out.println("Bye!");
-        DeleteHistory.instance().api().logger().archive();
         Thread.sleep(200);
         running = false;
         interrupt();

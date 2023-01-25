@@ -5,7 +5,6 @@ import de.tnttastisch.listener.MessageReceive;
 import de.tnttastisch.main.DeleteHistory;
 import de.tnttastisch.utils.core.Console;
 import de.tnttastisch.utils.core.InOut;
-import de.tnttastisch.utils.log.Logger;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -19,12 +18,10 @@ public class DeleteAPI {
     private Console console;
     private MainConfiguration configuration;
     private InOut inOut;
-    private Logger logger;
 
     public DeleteAPI() {
         inOut = new InOut();
         console = new Console();
-        logger = new Logger();
         configuration = new MainConfiguration();
     }
 
@@ -71,7 +68,4 @@ public class DeleteAPI {
         return configuration;
     }
 
-    public Logger logger() {
-        return logger;
-    }
 }
